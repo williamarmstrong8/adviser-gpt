@@ -10,6 +10,7 @@ const FOOTER_SECTIONS = [
     title: "Products",
     url: "/products",
     links: [
+      { label: "Vault", href: "/products#vault" },
       { label: "Word add-in", href: "/products#word" },
       { label: "Excel add-in", href: "/products#excel" },
       { label: "Web app", href: "/products#webapp" },

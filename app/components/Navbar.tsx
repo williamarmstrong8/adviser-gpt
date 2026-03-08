@@ -44,7 +44,7 @@ export default function Navbar() {
     >
       <UINavbar
         auth={{
-          login: { text: "Login", url: "#" },
+          login: { text: "Login", url: "https://app.advisergpt.ai/login" },
           signup: { text: "Request Demo", url: "/contact-sales" },
         }}
         showSearch={false}

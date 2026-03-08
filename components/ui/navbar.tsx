@@ -1,6 +1,6 @@
 "use client";
 
-import { BookOpen, Briefcase, Building2, FileText, GraduationCap, Globe, Menu, MoreHorizontal, PlayCircle, Search, Shield, Table, TrendingUp, UserCheck, Users } from "lucide-react";
+import { BookOpen, Briefcase, Building2, Database, FileText, GraduationCap, Globe, Menu, MoreHorizontal, PlayCircle, Search, Shield, Table, TrendingUp, UserCheck, Users } from "lucide-react";
 import * as React from "react";
 import Link from "next/link";
 
@@ -68,6 +68,12 @@ const defaultMenu: MenuItem[] = [
     title: "Products",
     url: "/products",
     items: [
+      {
+        title: "Vault",
+        description: "Your previous RFPs and DDQs in your firm's tone",
+        url: "/products#vault",
+        icon: <Database className="size-5 shrink-0" />,
+      },
       {
         title: "Word add-in",
         description: "Draft and refine in Word with your Vault",
@@ -178,7 +184,7 @@ export default function Navbar({
   menu = defaultMenu,
   mobileExtraLinks = [],
   auth = {
-    login: { text: "Login", url: "#" },
+    login: { text: "Login", url: "https://app.advisergpt.ai/login" },
     signup: { text: "Request Demo", url: "/contact-sales" },
   },
   showSearch = false,
@@ -232,7 +238,7 @@ export default function Navbar({
               </Button>
             )}
             <Button asChild variant="ghost" size="sm" className="rounded-full">
-              <a href={auth.login.url}>{auth.login.text}</a>
+              <a href={auth.login.url} target="_blank" rel="noopener noreferrer">{auth.login.text}</a>
             </Button>
             <Button asChild size="sm" className="rounded-full">
               <a href={auth.signup.url}>{auth.signup.text}</a>
@@ -308,7 +314,7 @@ export default function Navbar({
                     )}
                     <div className="flex flex-col gap-3">
                       <Button asChild variant="ghost" className="rounded-full">
-                        <a href={auth.login.url}>{auth.login.text}</a>
+                        <a href={auth.login.url} target="_blank" rel="noopener noreferrer">{auth.login.text}</a>
                       </Button>
                       <Button asChild className="rounded-full">
                         <a href={auth.signup.url}>{auth.signup.text}</a>

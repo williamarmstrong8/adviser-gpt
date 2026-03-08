@@ -2,9 +2,24 @@
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { FileText, Table, Globe } from "lucide-react";
+import { Database, FileText, Table, Globe } from "lucide-react";
 
 const PRODUCTS = [
+  {
+    id: "vault",
+    name: "Vault",
+    tagline: "Where all your previous RFPs and DDQs live.",
+    description:
+      "The Vault is your firm’s single source of truth for approved answers and narrative. Every RFP and DDQ you’ve completed feeds into it—so AdviserGPT can answer new questionnaires in your firm’s tone and language, grounded in content you’ve already validated.",
+    details: [
+      "Store and organize approved answers, narrative blocks, and data from past RFPs and DDQs.",
+      "Word, Excel, and the web app all pull from the Vault—one source of truth across every tool.",
+      "New responses are built from your existing content so every answer stays in your firm’s voice.",
+    ],
+    icon: Database,
+    accent: "#6A2E6B",
+    background: "linear-gradient(135deg, rgba(139, 58, 143, 0.08) 0%, rgba(58, 26, 110, 0.06) 50%, rgba(245, 238, 250, 0.95) 100%)",
+  },
   {
     id: "word",
     name: "Word add-in",
@@ -47,8 +62,8 @@ const PRODUCTS = [
       "Keep Word, Excel, and the web app in sync so updates in one place reflect everywhere.",
     ],
     icon: Globe,
-    accent: "#6A2E6B",
-    background: "linear-gradient(135deg, rgba(139, 58, 143, 0.08) 0%, rgba(58, 26, 110, 0.06) 50%, rgba(245, 238, 250, 0.95) 100%)",
+    accent: "#86532f",
+    background: "linear-gradient(135deg, rgba(134, 83, 47, 0.1) 0%, rgba(134, 83, 47, 0.05) 50%, rgba(250, 246, 243, 0.95) 100%)",
   },
 ];
 
@@ -89,7 +104,7 @@ export default function ProductsPage() {
               fontWeight: 400,
             }}
           >
-            Word, Excel, and the web app—each built to fit how your team already works.
+            The Vault, Word, Excel, and the web app—each built to fit how your team already works.
           </p>
         </div>
       </section>
