@@ -290,7 +290,7 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      <Footer showDemoCta={false} />
+      <Footer />
 
       <style>{`
         @media (max-width: 700px) {

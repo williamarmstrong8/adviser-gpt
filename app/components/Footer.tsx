@@ -50,7 +50,7 @@ const FOOTER_SECTIONS = [
   },
 ];
 
-export default function Footer({ showDemoCta = true }: { showDemoCta?: boolean }) {
+export default function Footer() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
@@ -64,111 +64,6 @@ export default function Footer({ showDemoCta = true }: { showDemoCta?: boolean }
 
   return (
     <>
-      {/* Bottom CTA Section — hidden on solutions pages */}
-      {showDemoCta && (
-      <section
-        id="demo"
-        style={{
-          padding: "96px 24px",
-          background: "#fafaf9",
-          textAlign: "center",
-          borderTop: "1px solid #e0ddd8",
-        }}
-      >
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          {/* CTA card — image background */}
-          <div
-            style={{
-              borderRadius: 20,
-              overflow: "hidden",
-              position: "relative",
-              backgroundImage: "url(/cta.avif)",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              padding: "120px 64px 112px",
-              textAlign: "center",
-            }}
-          >
-            <h2
-              style={{
-                fontSize: "clamp(28px, 4vw, 44px)",
-                fontWeight: 400,
-                letterSpacing: "-0.01em",
-                color: "#FFFFFF",
-                lineHeight: 1.2,
-                marginBottom: 28,
-                fontFamily: "var(--font-playfair), Georgia, serif",
-              }}
-            >
-              See AdviserGPT in action.
-            </h2>
-
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: 16,
-              }}
-            >
-              <a
-                href="/contact-sales"
-                style={{
-                  display: "inline-block",
-                  padding: "13px 28px",
-                  borderRadius: 100,
-                  fontSize: 15,
-                  fontWeight: 600,
-                  textDecoration: "none",
-                  background: "#FFFFFF",
-                  color: "#1a1a1a",
-                  border: "1px solid rgba(0,0,0,0.08)",
-                  boxShadow: "0 1px 3px rgba(0,0,0,0.08)",
-                  transition: "box-shadow 0.2s ease, background 0.2s ease",
-                }}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.background = "#f5f5f5";
-                  e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.12)";
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.background = "#FFFFFF";
-                  e.currentTarget.style.boxShadow = "0 1px 3px rgba(0,0,0,0.08)";
-                }}
-              >
-                Request Demo
-              </a>
-              <a
-                href="/products"
-                style={{
-                  display: "inline-block",
-                  padding: "13px 28px",
-                  borderRadius: 100,
-                  fontSize: 15,
-                  fontWeight: 500,
-                  textDecoration: "none",
-                  color: "#FFFFFF",
-                  background: "transparent",
-                  border: "2px solid rgba(255,255,255,0.9)",
-                  transition: "background 0.2s ease, border-color 0.2s ease",
-                }}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.background = "rgba(255,255,255,0.15)";
-                  e.currentTarget.style.borderColor = "#FFFFFF";
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.background = "transparent";
-                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.9)";
-                }}
-              >
-                Take self-guided tour
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-      )}
-
       {/* Footer */}
       <footer
         style={{
@@ -340,10 +235,13 @@ export default function Footer({ showDemoCta = true }: { showDemoCta?: boolean }
                 &copy; 2026 S2 Strategy, LLC. All rights reserved.
               </p>
               <div style={{ display: "flex", gap: 20 }}>
-                {["Privacy Policy", "Terms of Service"].map((link) => (
+                {[
+                  { label: "Privacy Policy", href: "/privacy" },
+                  { label: "Terms of Service", href: "/terms" },
+                ].map(({ label, href }) => (
                   <a
-                    key={link}
-                    href="#"
+                    key={label}
+                    href={href}
                     style={{
                       fontSize: 13,
                       color: "rgba(255,255,255,0.7)",
@@ -354,7 +252,7 @@ export default function Footer({ showDemoCta = true }: { showDemoCta?: boolean }
                     onMouseOver={(e) => (e.currentTarget.style.color = "#ffffff")}
                     onMouseOut={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}
                   >
-                    {link}
+                    {label}
                   </a>
                 ))}
               </div>

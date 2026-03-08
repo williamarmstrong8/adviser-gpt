@@ -399,7 +399,7 @@ export default function ContactSalesPage() {
         </div>
       </section>
 
-      <Footer showDemoCta={false} />
+      <Footer />
 
       <style>{`
         @media (max-width: 768px) {
