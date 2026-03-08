@@ -86,7 +86,7 @@ export function BookDemoCta() {
         Book a demo and see how teams use AI for RFPs and due diligence.
       </p>
       <Link
-        href="/#demo"
+        href="/contact-sales"
         style={{
           display: "inline-block",
           padding: "10px 18px",

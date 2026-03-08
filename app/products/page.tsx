@@ -194,7 +194,7 @@ export default function ProductsPage() {
                     ))}
                   </ul>
                   <a
-                    href="/#demo"
+                    href="/contact-sales"
                     style={{
                       display: "inline-block",
                       marginTop: 28,

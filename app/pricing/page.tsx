@@ -77,7 +77,7 @@ export default function PricingPage() {
       window.location.href =
         "mailto:sales@advisergpt.com?subject=Enterprise%20plan";
     } else {
-      window.location.href = "/#demo";
+      window.location.href = "/contact-sales";
     }
   };
 

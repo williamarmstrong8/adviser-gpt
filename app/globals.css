@@ -80,7 +80,7 @@ body {
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 90s linear infinite;
+  animation: marquee 55s linear infinite;
 }
 
 .marquee-wrapper {
@@ -186,6 +186,6 @@ body {
 
 @media (max-width: 768px) {
   .marquee-track {
-    animation-duration: 60s;
+    animation-duration: 42s;
   }
 }

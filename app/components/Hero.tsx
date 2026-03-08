@@ -1,97 +1,44 @@
 "use client";
 
-type Firm = {
-  name: string;
-  sub?: string;
-  icon?: string;
-  style?: "serif" | "sans" | "badge";
-};
-
-const firms: Firm[] = [
-  { name: "The London", sub: "Company", icon: "4", style: "badge" },
-  { name: "VULCAN", sub: "VALUE PARTNERS", icon: "V", style: "badge" },
-  { name: "ALTRINSIC", style: "serif" },
-  { name: "CORNERSTONE", sub: "INVESTMENT ADVISORS, LLC", style: "sans" },
-  { name: "Kennedy Capital Management", style: "serif" },
-  { name: "Logan Capital", icon: "LC", style: "badge" },
-  { name: "MAINSTREET", sub: "ADVISORS", icon: "🌳", style: "badge" },
-  { name: "Prime Buchholz", style: "sans" },
-  { name: "Riverbridge", style: "serif" },
-  { name: "Reynders McVeigh", sub: "CAPITAL MANAGEMENT, LLC", style: "sans" },
+const FIRM_LOGOS: { name: string; src: string }[] = [
+  { name: "The London Company", src: "/logos/tlc.png" },
+  { name: "Vulcan Value Partners", src: "/logos/vulcan.avif" },
+  { name: "Cornerstone", src: "/logos/cornerstone.png" },
+  { name: "Kennedy Capital Management", src: "/logos/kennedy%20capital.png" },
+  { name: "Logan Capital", src: "/logos/logan-capital.avif" },
+  { name: "Mainstreet Advisors", src: "/logos/mainstreet.png" },
+  { name: "Prime Buchholz", src: "/logos/prime.avif" },
+  { name: "SCP", src: "/logos/scp.avif" },
 ];
 
-function FirmLogo({ firm }: { firm: Firm }) {
+function FirmLogo({ name, src }: { name: string; src: string }) {
   return (
     <div
       style={{
         display: "flex",
         alignItems: "center",
-        gap: 8,
-        padding: "0 64px",
-        height: 96,
-        whiteSpace: "nowrap",
+        justifyContent: "center",
+        padding: "0 36px",
+        height: 48,
         flexShrink: 0,
-        opacity: 0.75,
+        opacity: 0.8,
       }}
     >
-      {firm.icon && (
-        <div
-          style={{
-            width: 52,
-            height: 52,
-            borderRadius: 9,
-            border: "1px solid #bbb",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: firm.icon.length > 1 ? 13 : 22,
-            fontWeight: 700,
-            color: "#555",
-            flexShrink: 0,
-          }}
-        >
-          {firm.icon}
-        </div>
-      )}
-      <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
-        <span
-          style={{
-            fontSize: firm.style === "serif" ? 22 : 17,
-            fontWeight: firm.style === "serif" ? 500 : 700,
-            color: "#333",
-            letterSpacing: firm.style === "sans" ? "0.06em" : firm.style === "serif" ? "0" : "0.03em",
-            fontFamily:
-              firm.style === "serif"
-                ? "Georgia, 'Times New Roman', serif"
-                : "var(--font-geist-sans), sans-serif",
-            lineHeight: 1.2,
-            textTransform: firm.style === "sans" ? "uppercase" : "none",
-          }}
-        >
-          {firm.name}
-        </span>
-        {firm.sub && (
-          <span
-            style={{
-              fontSize: 12,
-              fontWeight: 600,
-              color: "#888",
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              fontFamily: "var(--font-geist-sans), sans-serif",
-              lineHeight: 1.2,
-            }}
-          >
-            {firm.sub}
-          </span>
-        )}
-      </div>
+      <img
+        src={src}
+        alt={name}
+        style={{
+          maxHeight: "100%",
+          width: "auto",
+          objectFit: "contain",
+        }}
+      />
     </div>
   );
 }
 
 export default function Hero() {
-  const duplicated = [...firms, ...firms];
+  const duplicated = [...FIRM_LOGOS, ...FIRM_LOGOS];
 
   return (
     <section
@@ -166,7 +113,7 @@ export default function Hero() {
           }}
         >
           <a
-            href="#demo"
+            href="/contact-sales"
             style={{
               display: "inline-block",
               padding: "13px 30px",
@@ -222,7 +169,7 @@ export default function Hero() {
             lineHeight: 1.15,
             letterSpacing: "-0.01em",
             color: "#1a1a1a",
-            marginBottom: 16,
+            marginBottom: 48,
             fontFamily: "var(--font-playfair), Georgia, 'Times New Roman', serif",
           }}
         >
@@ -232,7 +179,7 @@ export default function Hero() {
         <div className="marquee-wrapper" style={{ width: "100%" }}>
           <div className="marquee-track">
             {duplicated.map((firm, i) => (
-              <FirmLogo key={`${firm.name}-${i}`} firm={firm} />
+              <FirmLogo key={`${firm.name}-${i}`} name={firm.name} src={firm.src} />
             ))}
           </div>
         </div>

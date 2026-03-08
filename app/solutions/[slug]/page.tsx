@@ -445,7 +445,7 @@ export default function SolutionPage() {
             }}
           >
             <a
-              href="/#demo"
+              href="/contact-sales"
               style={{
                 display: "inline-block",
                 padding: "14px 28px",
@@ -745,7 +745,7 @@ export default function SolutionPage() {
             }}
           >
             <a
-              href="/#demo"
+              href="/contact-sales"
               style={{
                 display: "inline-block",
                 padding: "14px 28px",

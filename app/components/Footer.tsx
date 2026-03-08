@@ -2,7 +2,53 @@
 
 import { useState } from "react";
 
-const FOOTER_LINK_COLOR = "#d4846a";
+const FOOTER_LINK_COLOR = "#e85d26";
+const FOOTER_LINK_HOVER = "#d04e1a";
+
+const FOOTER_SECTIONS = [
+  {
+    title: "Products",
+    url: "/products",
+    links: [
+      { label: "Word add-in", href: "/products#word" },
+      { label: "Excel add-in", href: "/products#excel" },
+      { label: "Web app", href: "/products#webapp" },
+    ],
+  },
+  {
+    title: "Solutions",
+    url: "/solutions",
+    links: [
+      { label: "Asset Managers", href: "/solutions/asset-managers" },
+      { label: "Wealth Advisers", href: "/solutions/wealth-advisers" },
+      { label: "Client Service Teams", href: "/solutions/client-service-teams" },
+      { label: "Compliance Teams", href: "/solutions/compliance-teams" },
+      { label: "RFP & DDQ Teams", href: "/solutions/rfp-teams" },
+      { label: "Outsourced CIOs", href: "/solutions/outsourced-cios" },
+    ],
+  },
+  {
+    title: "Resources",
+    url: "/resources",
+    links: [
+      { label: "Blogs", href: "/resources/blogs" },
+      { label: "Educational", href: "/resources/educational" },
+      { label: "Videos", href: "/resources/videos" },
+      { label: "Customers", href: "/resources/customers" },
+      { label: "All resources", href: "/resources" },
+    ],
+  },
+  {
+    title: "Company",
+    url: "#",
+    links: [
+      { label: "About", href: "#about" },
+      { label: "People", href: "#people" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "Contact sales", href: "/contact-sales" },
+    ],
+  },
+];
 
 export default function Footer({ showDemoCta = true }: { showDemoCta?: boolean }) {
   const [email, setEmail] = useState("");
@@ -67,7 +113,7 @@ export default function Footer({ showDemoCta = true }: { showDemoCta?: boolean }
               }}
             >
               <a
-                href="mailto:demo@advisergpt.com"
+                href="/contact-sales"
                 style={{
                   display: "inline-block",
                   padding: "13px 28px",
@@ -137,12 +183,12 @@ export default function Footer({ showDemoCta = true }: { showDemoCta?: boolean }
             margin: "0 auto",
           }}
         >
-          {/* Top row: Brand + Newsletter | AdviserGPT links | Company links */}
+          {/* Top row: Brand + Newsletter | Section columns (Products, Solutions, …) */}
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "1.4fr 1fr 1fr",
-              gap: 56,
+              gridTemplateColumns: "1.4fr repeat(4, minmax(0, 1fr))",
+              gap: "32px 40px",
               marginBottom: 48,
             }}
             className="footer-grid"
@@ -176,7 +222,7 @@ export default function Footer({ showDemoCta = true }: { showDemoCta?: boolean }
                 <div
                   style={{
                     padding: "12px 0",
-                    color: "#d4846a",
+                    color: "#e85d26",
                     fontSize: 14,
                     fontWeight: 500,
                   }}
@@ -227,73 +273,47 @@ export default function Footer({ showDemoCta = true }: { showDemoCta?: boolean }
               )}
             </div>
 
-            {/* Middle: AdviserGPT / Product links */}
-            <div>
-              <div
-                style={{
-                  fontSize: 14,
-                  fontWeight: 700,
-                  color: "#ffffff",
-                  marginBottom: 16,
-                  fontFamily: "var(--font-geist-sans), sans-serif",
-                }}
-              >
-                AdviserGPT
-              </div>
-              {["Product", "Features", "Pricing", "Reviews", "FAQs"].map((link) => (
+            {/* Section columns: each page as header, dropdown items as links */}
+            {FOOTER_SECTIONS.map((section) => (
+              <div key={section.title}>
                 <a
-                  key={link}
-                  href={link === "Product" ? "#product" : link === "Pricing" ? "/pricing" : `#${link.toLowerCase()}`}
+                  href={section.url}
                   style={{
                     display: "block",
                     fontSize: 14,
-                    color: FOOTER_LINK_COLOR,
+                    fontWeight: 700,
+                    color: "#ffffff",
+                    marginBottom: 14,
                     textDecoration: "none",
-                    marginBottom: 10,
                     transition: "color 0.15s ease",
                     fontFamily: "var(--font-geist-sans), sans-serif",
                   }}
-                  onMouseOver={(e) => (e.currentTarget.style.color = "#e8a088")}
-                  onMouseOut={(e) => (e.currentTarget.style.color = FOOTER_LINK_COLOR)}
+                  onMouseOver={(e) => (e.currentTarget.style.color = FOOTER_LINK_COLOR)}
+                  onMouseOut={(e) => (e.currentTarget.style.color = "#ffffff")}
                 >
-                  {link}
+                  {section.title}
                 </a>
-              ))}
-            </div>
-
-            {/* Right: Company links */}
-            <div>
-              <div
-                style={{
-                  fontSize: 14,
-                  fontWeight: 700,
-                  color: "#ffffff",
-                  marginBottom: 16,
-                  fontFamily: "var(--font-geist-sans), sans-serif",
-                }}
-              >
-                Company
+                {section.links.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    style={{
+                      display: "block",
+                      fontSize: 14,
+                      color: FOOTER_LINK_COLOR,
+                      textDecoration: "none",
+                      marginBottom: 8,
+                      transition: "color 0.15s ease",
+                      fontFamily: "var(--font-geist-sans), sans-serif",
+                    }}
+                    onMouseOver={(e) => (e.currentTarget.style.color = FOOTER_LINK_HOVER)}
+                    onMouseOut={(e) => (e.currentTarget.style.color = FOOTER_LINK_COLOR)}
+                  >
+                    {link.label}
+                  </a>
+                ))}
               </div>
-              {["About", "People"].map((link) => (
-                <a
-                  key={link}
-                  href={`#${link.toLowerCase()}`}
-                  style={{
-                    display: "block",
-                    fontSize: 14,
-                    color: FOOTER_LINK_COLOR,
-                    textDecoration: "none",
-                    marginBottom: 10,
-                    transition: "color 0.15s ease",
-                    fontFamily: "var(--font-geist-sans), sans-serif",
-                  }}
-                  onMouseOver={(e) => (e.currentTarget.style.color = "#e8a088")}
-                  onMouseOut={(e) => (e.currentTarget.style.color = FOOTER_LINK_COLOR)}
-                >
-                  {link}
-                </a>
-              ))}
-            </div>
+            ))}
           </div>
 
           {/* Bottom: Copyright + legal links | Website by */}
@@ -353,14 +373,30 @@ export default function Footer({ showDemoCta = true }: { showDemoCta?: boolean }
       </footer>
 
       <style>{`
+        .footer-grid > *:nth-child(2) {
+          padding-left: 32px;
+        }
+        @media (max-width: 1024px) {
+          .footer-grid {
+            grid-template-columns: 1fr 1fr 1fr !important;
+          }
+          .footer-grid > *:nth-child(2) {
+            padding-left: 0;
+          }
+        }
         @media (max-width: 768px) {
           .footer-grid {
-            grid-template-columns: 1fr !important;
-            gap: 40px !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 32px 24px !important;
           }
           .footer-newsletter-form {
             flex-direction: column !important;
             max-width: 100% !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .footer-grid {
+            grid-template-columns: 1fr !important;
           }
         }
       `}</style>

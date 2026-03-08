@@ -179,7 +179,7 @@ export default function Navbar({
   mobileExtraLinks = [],
   auth = {
     login: { text: "Login", url: "#" },
-    signup: { text: "Request Demo", url: "#demo" },
+    signup: { text: "Request Demo", url: "/contact-sales" },
   },
   showSearch = false,
   showCart = false,
@@ -335,7 +335,7 @@ export default function Navbar({
                 <Link href="/pricing">Pricing</Link>
               </CommandItem>
               <CommandItem>
-                <a href="#demo">Request Demo</a>
+                <Link href="/contact-sales">Request Demo</Link>
               </CommandItem>
             </CommandGroup>
           </CommandList>

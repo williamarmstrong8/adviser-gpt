@@ -45,7 +45,7 @@ export default function Navbar() {
       <UINavbar
         auth={{
           login: { text: "Login", url: "#" },
-          signup: { text: "Request Demo", url: "#demo" },
+          signup: { text: "Request Demo", url: "/contact-sales" },
         }}
         showSearch={false}
         showCart={false}
