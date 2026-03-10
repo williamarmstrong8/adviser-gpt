@@ -285,7 +285,7 @@ export default function Footer() {
         }
         @media (max-width: 768px) {
           .footer-grid {
-            grid-template-columns: 1fr 1fr !important;
+            grid-template-columns: 1fr !important;
             gap: 32px 24px !important;
           }
           .footer-newsletter-form {
