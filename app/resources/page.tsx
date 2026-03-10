@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -29,7 +30,7 @@ function ResourceCardSmall({
   icon: React.ReactNode;
 }) {
   return (
-    <a
+    <Link
       href="/resources"
       style={{
         display: "block",
@@ -106,7 +107,7 @@ function ResourceCardSmall({
           {description}
         </p>
       </div>
-    </a>
+    </Link>
   );
 }
 

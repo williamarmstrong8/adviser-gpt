@@ -14,9 +14,13 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const stored = sessionStorage.getItem(STORAGE_KEY);
-      setUnlocked(stored === "true");
+      queueMicrotask(() => {
+        setUnlocked(stored === "true");
+        setChecked(true);
+      });
+    } else {
+      queueMicrotask(() => setChecked(true));
     }
-    setChecked(true);
   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {

@@ -262,7 +262,7 @@ export default function SolutionsPage() {
               marginBottom: 28,
             }}
           >
-            Book a demo and we'll show you exactly how AdviserGPT fits your team
+            Book a demo and we&apos;ll show you exactly how AdviserGPT fits your team
             and workflow.
           </p>
           <a
