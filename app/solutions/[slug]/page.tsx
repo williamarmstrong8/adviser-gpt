@@ -343,7 +343,8 @@ const SOLUTIONS: Record<string, SolutionData> = {
 const SOLUTION_SLUGS = Object.keys(SOLUTIONS);
 
 export default function SolutionPage() {
-  const { slug } = useParams<{ slug: string }>();
+  const params = useParams<{ slug: string }>();
+  const slug = params?.slug ?? "";
   const sol = SOLUTIONS[slug];
   if (!sol) return null;
 
